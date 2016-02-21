@@ -1,4 +1,4 @@
-<div id="grueneext-short-code-generator" style="display: block;">
+<div id="grueneext-short-code-generator" style="display: none;">
 	<div class="wrapper">
 		
 		<div id="grueneext-short-code-message" class="notice-warning"></div>

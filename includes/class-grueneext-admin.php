@@ -16,12 +16,9 @@ if( ! class_exists( 'Grueneext_Admin' ) ) {
           /**
           * Add a media button to the post & page edit pages to insert shortcode easly
           * 
-          * @param    string    $context    given from 'media_buttons_context'-filter
-          * @return   string
-          * 
           * @see                            http://de.wpseek.com/function/media_buttons/
           */
-          public function add_media_button( $context ) {
+          public function add_media_button() {
               global $typenow;
 
               // verify the post type

@@ -4,19 +4,19 @@
 div.grueneext_hide_n_show div.grueneext_hide_n_show_display
 	{ margin-left: 2.5em; }
 
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display a::before
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display a:before
 	{ content: ""; border-color: transparent #e10078; border-style: solid;
        border-width: 0.5em 0 0.5em 0.5em; height: 0; width: 0; display: inline-block;
 	  margin-right: 1em; transition: transform 0.2s; margin-left: -2em;
        transform-origin: center center; top: 0.1em; left: 0.25em; position: relative;}
 
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display:hover a::before
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display:hover a:before
      { border-color: transparent #3a7a01; }
 
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display.grueneext_hide_n_show_closed a::before
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display.grueneext_hide_n_show_closed a:before
 	{  }
 
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display.grueneext_hide_n_show_open a::before
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display.grueneext_hide_n_show_open a:before
 	{ transform: rotate( 90deg ); }
 
 div.grueneext_hide_n_show div.grueneext_hide_n_show_display a

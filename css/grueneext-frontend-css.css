@@ -24,7 +24,9 @@ div.grueneext_hide_n_show div.grueneext_hide_n_show_display a
 
 div.grueneext_hide_n_show div.grueneext_hide_n_show_display:hover a
 	{ color: #3a7a01; }
-     
+
+div.grueneext_hide_n_show_content
+     { overflow: hidden; /* Bugfix: To prevent it from juming around on toggling. */}
 /*--------------------------------------------------------------
 # Button
 --------------------------------------------------------------*/

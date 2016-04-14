@@ -41,7 +41,7 @@ if( ! class_exists( 'Grueneext_Frontend' ) ) {
                     )
                );
 
-               return    '<div class="'.$class.' '.$add_class.'" style="'.$css.'">'
+               return    '<div class="'.esc_attr($class).' '.esc_attr($add_class).'" style="'.esc_attr($css).'">'
                              .'<div class="grueneext_hide_n_show_display"><h2><a href="#">'.$display.'</a><h2></div>'
                              .'<div class="grueneext_hide_n_show_content">' . do_shortcode( $content ) . '</div>'
                         .'</div>';
@@ -80,7 +80,7 @@ if( ! class_exists( 'Grueneext_Frontend' ) ) {
                $color  = 'grueneext_button_' . $color;
                $target = empty( $target ) ? '' : ' target="'.$target.'"';
 
-               return    '<a href="'.$link.'" class="'.$class.' '.$color.' '.$add_class.'" style="'.$css.'"'.$target.'>'
+               return    '<a href="'.esc_url($link).'" class="'.esc_attr($class).' '.esc_attr($color).' '.esc_attr($add_class).'" style="'.esc_attr($css).'"'.esc_attr($target).'>'
                              . do_shortcode( $content )
                          .'</a>';
           }
@@ -120,8 +120,8 @@ if( ! class_exists( 'Grueneext_Frontend' ) ) {
                $color  = 'grueneext_progressbar_' . $color;
                $show_value = 'show' == $show_value ? true : false;
                
-               return    '<div class="'.$class.' '.$color.' '.$add_class.'" style="'.$css.'" data-max="'.$max.'" data-value="'.$value.'">'
-                              .'<div class="grueneext_progressbar_label">'.$value.$unit.'</div>'
+               return    '<div class="'.esc_attr($class).' '.esc_attr($color).' '.esc_attr($add_class).'" style="'.esc_attr($css).'" data-max="'.esc_attr($max).'" data-value="'.esc_attr($value).'">'
+                              .'<div class="grueneext_progressbar_label">'.esc_html($value).esc_html($unit).'</div>'
                          .'</div>';
           }
 	}

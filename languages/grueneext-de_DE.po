@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Grueneext\n"
-"POT-Creation-Date: 2015-09-25 12:29+0100\n"
-"PO-Revision-Date: 2015-09-25 12:29+0100\n"
+"POT-Creation-Date: 2016-04-14 22:42+0100\n"
+"PO-Revision-Date: 2016-04-14 23:00+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -18,21 +18,97 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../grueneext.php:137
+#: ../grueneext.php:190
 msgid "You do not have sufficient permissions to access this page."
-msgstr ""
+msgstr "Keine Rechte zum Anzeigen dieser Seite."
 
 #: ../admin/options.php:2
 msgid "Grueneext options"
-msgstr ""
+msgstr "Grueneext Optionen"
 
-#: ../includes/class-grueneext-frontend.php:20
-msgid "Unknown shortcode"
-msgstr ""
+#: ../admin/short-code-generator.php:8
+msgid "Which type of special function shall be insertet?"
+msgstr "Welche Spezialfunktion soll eingefügt werden?"
 
-#: ../includes/class-grueneext-settings.php:54
-msgid "Grueneext_user"
-msgstr ""
+#: ../admin/short-code-generator.php:10
+msgid "Select special function"
+msgstr "Wähle die Spezialfunktion"
+
+#: ../admin/short-code-generator.php:11
+msgid "Hide and Show"
+msgstr "Hide and Show"
+
+#: ../admin/short-code-generator.php:12
+msgid "Button"
+msgstr "Button"
+
+#: ../admin/short-code-generator.php:13
+msgid "Progressbar"
+msgstr "Fortschrittsanzeige"
+
+#: ../admin/short-code-generator.php:19
+msgid "Enter the title of your hide and show element"
+msgstr "Gib hier den Titel deines Hide and show Elements an"
+
+#: ../admin/short-code-generator.php:20
+msgid "Enter your \"Hide and Show\" title here."
+msgstr "Gib hier dein \"Hide and Show\" title ein."
+
+#: ../admin/short-code-generator.php:26
+msgid "Enter the link where the button leads to"
+msgstr "Setze den Link des Buttons"
+
+#: ../admin/short-code-generator.php:27
+msgid "Where shall the button lead to (URL)?"
+msgstr "Wohin soll der Button führen (URL)?"
+
+#: ../admin/short-code-generator.php:30 ../admin/short-code-generator.php:59
+msgid "Chose color scheme"
+msgstr "Wähle den Farbmodus"
+
+#: ../admin/short-code-generator.php:32 ../admin/short-code-generator.php:61
+msgid "Magenta"
+msgstr "Magenta"
+
+#: ../admin/short-code-generator.php:33 ../admin/short-code-generator.php:62
+msgid "Green"
+msgstr "Grün"
+
+#: ../admin/short-code-generator.php:40
+msgid "Enter the maximum value."
+msgstr "Gib den Maximalwert an."
+
+#: ../admin/short-code-generator.php:44
+msgid "Enter the current value."
+msgstr "Gib den aktuellen Stand an."
+
+#: ../admin/short-code-generator.php:48
+msgid "Enter the unit (optional)."
+msgstr "Gib die Einheit an (optional)."
+
+#: ../admin/short-code-generator.php:52
+msgid "Choose if the value should be displayed"
+msgstr "Wähle, ob der Stand angezeigt werden soll"
+
+#: ../admin/short-code-generator.php:54
+msgid "Show value"
+msgstr "Zeige Stand"
+
+#: ../admin/short-code-generator.php:55
+msgid "Hide value"
+msgstr "Verberge Stand"
+
+#: ../admin/short-code-generator.php:67
+msgid "Insert shortcode"
+msgstr "Shortcode einfügen"
+
+#: ../includes/class-grueneext-admin.php:34
+msgid "Insert Theme Shortcode"
+msgstr "Theme-Shortcode einfügen"
+
+#: ../includes/class-grueneext-admin.php:36
+msgid "Add Special Function"
+msgstr "Spezialfunktion hinzufügen"
 
 #~ msgid "Unterschriften eintragen"
 #~ msgstr "Ajouter signatures"

@@ -21,8 +21,9 @@ if( ! class_exists( 'Grueneext_Frontend' ) ) {
            * with the caption of the togglebutton and 'The content' with
            * the content to slide in or out. When the page ist loaded,
            * the content is hidden.
-           * Use the conditional arguemnts 'css' to add some custom styles
-           * and 'add_class' to add some custom classes.
+           * Use the conditional arguments 'css' to add some custom styles,
+           * 'add_class' to add some custom classes, 'header' to define
+	       * the heading hierarchy.
            * 
            * @param array $atts given from the add_shortcode function
            * @param string $content given from the add_shortcode function
@@ -36,13 +37,17 @@ if( ! class_exists( 'Grueneext_Frontend' ) ) {
                              'css'           => '',
                              'class'         => 'grueneext_hide_n_show',
                              'add_class'     => '',
+	                         'header'        => 'h2',
                          ),
                          $atts
                     )
                );
-
+	          
+               // prevent false header tags
+               $header = in_array(strtolower(trim($header)), array('h1', 'h2', 'h3', 'h4', 'h5', 'h6')) ? trim($header) : 'h2';
+               
                return    '<div class="'.esc_attr($class).' '.esc_attr($add_class).'" style="'.esc_attr($css).'">'
-                             .'<div class="grueneext_hide_n_show_display"><h2><a href="#">'.$display.'</a><h2></div>'
+                             .'<div class="grueneext_hide_n_show_display"><'.$header.'><a href="#">'.$display.'</a><'.$header.'></div>'
                              .'<div class="grueneext_hide_n_show_content">' . do_shortcode( $content ) . '</div>'
                         .'</div>';
           }

@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Grueneext
  * Plugin URI: http://www.cyrillbolliger.ch
- * Version: 1.0.5
+ * Version: 1.1.0
  * Description: Extended functions for the gruene theme
  * Author: Cyrill Bolliger
  * Author URI: http://www.cyrillbolliger.ch

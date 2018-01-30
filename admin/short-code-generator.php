@@ -5,7 +5,7 @@
 		
 		<form action="#" method="post">
 			<p id="grueneext-select-type">
-                    <label for="grueneext-select-type"><?php _e( 'Which type of special function shall be insertet?', 'grueneext' ); ?></label><br/>
+                    <label for="grueneext-select-type"><?php _e( 'Which type of special function shall be inserted?', 'grueneext' ); ?></label><br/>
 				<select name="grueneext-select-type">
                          <option value="-1"><?php _e( 'Select special function', 'grueneext' ); ?></option>
                          <option value="hide_n_show"><?php _e( 'Hide and Show', 'grueneext' ); ?></option>

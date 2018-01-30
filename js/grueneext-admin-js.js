@@ -67,7 +67,6 @@
                     // close thickbox
                     tb_remove();
                     return false;
-                    break;
 
                 case 'hide_n_show':
                     if ('' !== $('input[name="grueneext-hide_n_show-display"]').val()) {
@@ -76,17 +75,15 @@
                         $('#grueneext-short-code-message').text('Please enter a title.').show();
                         return false;
                     }
-                    break;
 
                 case 'button':
                     var link = $('input[name="grueneext-button-link"]').val();
-                    if ('' !== link && true === self.validUrl(link)) {
+                    if ('' !== link && true === self.isUrlValid(link)) {
                         return true;
                     } else {
                         $('#grueneext-short-code-message').text('Please enter a valid url.').show();
                         return false;
                     }
-                    break;
 
                 case 'progressbar':
                     if (isNaN(parseFloat($('input[name="grueneext-progressbar-max"]').val()))) {
@@ -97,6 +94,14 @@
                         return false;
                     } else {
                         return true;
+                    }
+
+                case 'donation_form':
+                    if ('' !== $('input[name="grueneext-donation_form-api_key"]').val()) {
+                        return true;
+                    } else {
+                        $('#grueneext-short-code-message').text('Please enter the API key provided by RaiseNow.').show();
+                        return false;
                     }
 
                 default:
@@ -117,13 +122,11 @@
                 case 'hide_n_show':
                     var text = $('input[name="grueneext-hide_n_show-display"]').val();
                     return '[hide_n_show display="' + text + '"]Replace this text with your toggle content.[/hide_n_show]';
-                    break;
 
                 case 'button':
                     var text = $('input[name="grueneext-button-link"]').val(),
                         color = $('select[name="grueneext-button-color"]').val();
                     return '[button link="' + text + '" color="' + color + '"]Replace this text with the text on your button.[/button]';
-                    break;
 
                 case 'progressbar':
                     var max = $('input[name="grueneext-progressbar-max"]').val(),
@@ -132,14 +135,24 @@
                         show_value = $('select[name="grueneext-progressbar-show_value"]').val(),
                         color = $('select[name="grueneext-progressbar-color"]').val();
                     return '[progressbar max="' + max + '" value="' + value + '" unit="' + unit + '" show_value="' + show_value + '" color="' + color + '"]';
-                    break;
+
+                case 'donation_form':
+                    var api_key = $('input[name="grueneext-donation_form-api_key"]').val(),
+                        language = $('select[name="grueneext-donation_form-language"]').val();
+                    return '[donation_form api_key="' + api_key + '" language="' + language + '"]';
 
                 default:
                     return false;
             }
         };
 
-        this.validUrl = function validUrl(url) {
+        /**
+         * Check if given url matches the url pattern and return true (valid) or false (not valid)
+         *
+         * @param url
+         * @return boolean
+         */
+        this.isUrlValid = function validUrl(url) {
             return /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(url);
         };
 

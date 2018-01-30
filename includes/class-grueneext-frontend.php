@@ -133,6 +133,56 @@ if ( ! class_exists( 'Grueneext_Frontend' ) ) {
 			       . '<div class="grueneext_progressbar_label">' . esc_html( $value ) . esc_html( $unit ) . '</div>'
 			       . '</div>';
 		}
+		
+		/**
+		 * Add shortcode for raise now donation form
+		 *
+		 * Use [donation_form] with the required arguments 'api_key' and 'language'.
+		 * Use the conditional arguements 'css' to add some custom styles and
+		 * 'add_class' to add some custom classes.
+		 *
+		 * @param array $atts given from the add_shortcode function
+		 * @param string $content given from the add_shortcode function
+		 *
+		 * @return string
+		 */
+		public function donation_form( $atts ) {
+			$languages = [ 'de', 'fr' ];
+			
+			extract(
+				shortcode_atts(
+					array(
+						'api_key'   => '',
+						'language'  => '',
+						'css'       => '',
+						'class'     => 'grueneext_donationform',
+						'add_class' => '',
+					),
+					$atts
+				)
+			);
+			
+			$api_key = trim( $api_key );
+			if ( empty( $api_key ) ) {
+				return '<div>' . sprintf( _x( 'Missing api key in shortcode. Shortcode must have the form: %s',
+						'%s will be replaced with an example shortcode', 'grueneext' ),
+						'[donation_form api_key="API_KEY" language="LANG"]' ) . '</div>';
+			}
+			
+			$language = trim( strtolower( $language ) );
+			if ( ! in_array( $language, $languages ) ) {
+				return '<div>' . sprintf( _x( 'Unknown language key in shortcode. Accepted values are %1$s. Shortcode must have the form: %2$s',
+						'%1$s will be replaced with the accepted language keys. %2$s will be replaced with an example shortcode',
+						'grueneext' ), implode( ', ', $languages ),
+						'[donation_form api_key="API_KEY" language="LANG"]' ) . '</div>';
+			}
+			
+			return '<div class="' . esc_attr( $class ) . ' ' . esc_attr( $add_class ) . '" style="' . esc_attr( $css ) . '">'
+			       . '<div class="dds-widget-container" data-widget="lema"></div>'
+			       . '<script language="javascript" src="https://widget.raisenow.com/widgets/lema/' . esc_attr( $api_key ) . '/js/dds-init-widget-' . esc_attr( $language ) . '.js" type="text/javascript"></script>'
+			       . '<script type="text/javascript">window.rnwWidget = window.rnwWidget || {};window.rnwWidget.configureWidget = function(options) {options.defaults[\'ui_onetime_amount_default\'] = \'5000\';};</script>'
+			       . '<style type="text/css" scoped>#lema-container.lema-container .lema-step-header, #lema-container.lema-container .lema-step, #lema-container.lema-container .lema-step-content {background:transparent;} #lema-container.lema-container .lema-button, #lema-container.lema-container .lema-step-number span {background: #e10078;} #lema-container.lema-container .lema-step-header {border-bottom: #e10078 1px solid;} #lema-container.lema-container .lema-step-number span, #lema-container.lema-container .lema-step-header-text, #lema-container.lema-container .lema-button-donate {font-family: \'Tahoma\', \'Verdana\', \'Segoe\', \'sans-serif\'; font-weight: bold;} #lema-container.lema-container .lema-step-header-text {color:#e10078;} #lema-container.lema-container .lema-amount-box.lema-active {border: #e10078 2px solid} .lema-overlay-bg {display: none !important;}</style>'
+			       . '</div>';
+		}
 	}
 }
-	

@@ -412,6 +412,7 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 			add_shortcode( 'hide_n_show', array( $grueneext_frontend, 'hide_n_show' ) );
 			add_shortcode( 'button', array( $grueneext_frontend, 'button' ) );
 			add_shortcode( 'progressbar', array( $grueneext_frontend, 'progressbar' ) );
+			add_shortcode( 'donation_form', array( $grueneext_frontend, 'donation_form' ) );
 		}
 		
 		/**

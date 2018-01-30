@@ -12,6 +12,7 @@
                     <option value="hide_n_show"><?php _e( 'Hide and Show', 'grueneext' ); ?></option>
                     <option value="button"><?php _e( 'Button', 'grueneext' ); ?></option>
                     <option value="progressbar"><?php _e( 'Progressbar', 'grueneext' ); ?></option>
+                    <option value="donation_form"><?php _e( 'Donation form', 'grueneext' ); ?></option>
                 </select>
             </p>
 
@@ -70,6 +71,24 @@
                     <select name="grueneext-progressbar-color">
                         <option value="magenta" selected="selected"><?php _e( 'Magenta', 'grueneext' ); ?></option>
                         <option value="green"><?php _e( 'Green', 'grueneext' ); ?></option>
+                    </select>
+                </p>
+            </div>
+
+            <div id="grueneext-short-code-donation_form" class="grueneext-short-code-type-element">
+                <div class="notice-info"><p><?php _e('You need to have a contract with RaiseNow to use this function.','grueneext') ?></p></div>
+                <p id="grueneext-select-donation_form-api_key" class="grueneext-short-code-input">
+                    <label for="grueneext-donation_form-api_key"><?php _e( 'Enter the API key you received from RaiseNow',
+					        'grueneext' ); ?></label><br/>
+                    <input type="text" name="grueneext-donation_form-api_key"
+                           placeholder="<?php esc_attr_e( 'Enter the API key here.', 'grueneext' ); ?>">
+                </p>
+                <p id="grueneext-select-donation_form-language" class="grueneext-short-code-input">
+                    <label for="grueneext-donation_form-language"><?php _e( 'Choose language for the donation form',
+                            'grueneext' ); ?></label><br/>
+                    <select name="grueneext-donation_form-language">
+                        <option value="de" selected="selected"><?php _e( 'German', 'grueneext' ); ?></option>
+                        <option value="fr"><?php _e( 'French', 'grueneext' ); ?></option>
                     </select>
                 </p>
             </div>

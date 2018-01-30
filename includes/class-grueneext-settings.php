@@ -1,18 +1,18 @@
 <?php
 
 /**
- * lock out script kiddies: die an direct call 
+ * lock out script kiddies: die an direct call
  */
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-if( ! class_exists( 'Grueneext_Settings' ) ) {
-
+if ( ! class_exists( 'Grueneext_Settings' ) ) {
+	
 	class Grueneext_Settings {
 		
 		/**
 		 * Holds the default options
-		 * 
-		 * Note: have a look at __contruct to see how it's used 
+		 *
+		 * Note: have a look at __contruct to see how it's used
 		 */
 		public $network_options = array();
 		public $single_blog_options = array();
@@ -25,15 +25,15 @@ if( ! class_exists( 'Grueneext_Settings' ) ) {
 		
 		/**
 		 * Holds an array with the role deinition
-		 * 
+		 *
 		 * Note: array must provide the arguments of the add_role() function
 		 */
 		public $roles = array();
 		
 		/**
 		 * Holds an array with the scripts / styles
-		 * 
-		 * Note: have a look at __contruct to see how it's used 
+		 *
+		 * Note: have a look at __contruct to see how it's used
 		 */
 		protected $scripts = array();
 		protected $styles = array();
@@ -41,42 +41,42 @@ if( ! class_exists( 'Grueneext_Settings' ) ) {
 		public function __construct() {
 			
 			$this->network_options = array(); // put your network options in here. 
-			                                  // Ex.: $network_options = array( array( GRUENEEXT_PLUGIN_PREFIX . '_option1_name' => 'default value'),
-			                                  //                                       GRUENEEXT_PLUGIN_PREFIX . '_option2_name' => 'default value') );
-			                                  // Note: include the plugin prefix for the option name
+			// Ex.: $network_options = array( array( GRUENEEXT_PLUGIN_PREFIX . '_option1_name' => 'default value'),
+			//                                       GRUENEEXT_PLUGIN_PREFIX . '_option2_name' => 'default value') );
+			// Note: include the plugin prefix for the option name
 			$this->single_blog_options = array(); // put your blog options in here.
 			
 			$this->scripts[] = array(
-				'handle'     => GRUENEEXT_PLUGIN_PREFIX . '-admin-js', // string
-				'src'        => '/js/grueneext-admin-js.js', // string relative to plugin folder
-				'deps'       => array( 'jquery' ), // array
-				'in_footer'  => true, // bool
-				'scope'      => 'admin', // admin | frontend | shared
-			);
-               $this->scripts[] = array(
-				'handle'     => GRUENEEXT_PLUGIN_PREFIX . '-frontend-js', // string
-				'src'        => '/js/grueneext-frontend-js.js', // string relative to plugin folder
-				'deps'       => array( 'jquery-ui-progressbar', 'jquery-ui-core' ), // array
-				'in_footer'  => true, // bool
-				'scope'      => 'frontend', // admin | frontend | shared
-			);
-			
-			$this->styles[] = array(
-				'handle'    => GRUENEEXT_PLUGIN_PREFIX . '-admin-css', // string
-				'src'       => '/css/grueneext-admin-css.css', // string relative to plugin folder
-				'deps'      => array(), // array
-				'media'     => 'all', // css media tag
+				'handle'    => GRUENEEXT_PLUGIN_PREFIX . '-admin-js', // string
+				'src'       => '/js/grueneext-admin-js.js', // string relative to plugin folder
+				'deps'      => array( 'jquery' ), // array
+				'in_footer' => true, // bool
 				'scope'     => 'admin', // admin | frontend | shared
 			);
-               $this->styles[] = array(
-				'handle'    => GRUENEEXT_PLUGIN_PREFIX . '-frontend-css', // string
-				'src'       => '/css/grueneext-frontend-css.css', // string relative to plugin folder
-				'deps'      => array(), // array
-				'media'     => 'all', // css media tag
+			$this->scripts[] = array(
+				'handle'    => GRUENEEXT_PLUGIN_PREFIX . '-frontend-js', // string
+				'src'       => '/js/grueneext-frontend-js.js', // string relative to plugin folder
+				'deps'      => array( 'jquery-ui-progressbar', 'jquery-ui-core' ), // array
+				'in_footer' => true, // bool
 				'scope'     => 'frontend', // admin | frontend | shared
 			);
 			
-			$network_tables = array(); // put your table names in this array (whitout prefix and stuff)
+			$this->styles[] = array(
+				'handle' => GRUENEEXT_PLUGIN_PREFIX . '-admin-css', // string
+				'src'    => '/css/grueneext-admin-css.css', // string relative to plugin folder
+				'deps'   => array(), // array
+				'media'  => 'all', // css media tag
+				'scope'  => 'admin', // admin | frontend | shared
+			);
+			$this->styles[] = array(
+				'handle' => GRUENEEXT_PLUGIN_PREFIX . '-frontend-css', // string
+				'src'    => '/css/grueneext-frontend-css.css', // string relative to plugin folder
+				'deps'   => array(), // array
+				'media'  => 'all', // css media tag
+				'scope'  => 'frontend', // admin | frontend | shared
+			);
+			
+			$network_tables     = array(); // put your table names in this array (whitout prefix and stuff)
 			$single_blog_tables = array(); // put your table names in this array (whitout prefix and stuff)
 			
 			$this->set_network_tables( $network_tables );
@@ -94,7 +94,7 @@ if( ! class_exists( 'Grueneext_Settings' ) ) {
 			
 			$tables = array();
 			
-			foreach( $table_names as $table_name ) {
+			foreach ( $table_names as $table_name ) {
 				$tables[ $table_name ] = $wpdb->base_prefix . GRUENEEXT_PLUGIN_PREFIX . '_' . $table_name;
 			}
 			
@@ -110,7 +110,7 @@ if( ! class_exists( 'Grueneext_Settings' ) ) {
 			
 			$tables = array();
 			
-			foreach( $table_names as $table_name ) {
+			foreach ( $table_names as $table_name ) {
 				$tables[ $table_name ] = GRUENEEXT_PLUGIN_PREFIX . '_' . $table_name;
 			}
 			

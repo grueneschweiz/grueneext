@@ -12,26 +12,26 @@
  * GitHub Plugin URI: cyrillbolliger/grueneext
  * License: GPL 2.
  */
- 
+
 /**
  * Copyright 2015 Cyrill Bolliger (email: bolliger@gmx.ch)
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as 
+ * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 /**
- * lock out script kiddies: die an direct call 
+ * lock out script kiddies: die an direct call
  */
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
@@ -77,8 +77,8 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 			add_action( 'plugins_loaded', array( &$this, 'upgrade' ) );
 			add_action( 'wp_enqueue_scripts', array( &$this, 'load_resources' ) );
 			add_action( 'admin_enqueue_scripts', array( &$this, 'load_resources' ) );
-               add_action( 'media_buttons', array( &$this, 'add_media_button' ), 15 );
-               add_action( 'admin_footer', array( &$this, 'add_short_code_generator_html' ), 15 );
+			add_action( 'media_buttons', array( &$this, 'add_media_button' ), 15 );
+			add_action( 'admin_footer', array( &$this, 'add_short_code_generator_html' ), 15 );
 			
 		}
 		
@@ -113,7 +113,7 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		 */
 		public function fe_init() {
 			if ( ! is_admin() ) {
-                    $this->short_code_handler();
+				$this->short_code_handler();
 			}
 		}
 		
@@ -124,19 +124,19 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 			// $this->init_options();
 		}
 		
-          /**
-           * Add media button to the editor
-           */
-          public function add_media_button() {
-               global $grueneext_admin;
-               $grueneext_admin->add_media_button();
-          }
-          
-          public function add_short_code_generator_html() {
-               global $grueneext_admin;
-               $grueneext_admin->add_short_code_generator_html();
-          }
-          
+		/**
+		 * Add media button to the editor
+		 */
+		public function add_media_button() {
+			global $grueneext_admin;
+			$grueneext_admin->add_media_button();
+		}
+		
+		public function add_short_code_generator_html() {
+			global $grueneext_admin;
+			$grueneext_admin->add_short_code_generator_html();
+		}
+		
 		/**
 		 * write version number to db
 		 */
@@ -163,7 +163,7 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 			
 			// set the current version number
 			$this->set_version_number();
-               
+			
 		}
 		
 		
@@ -181,7 +181,7 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		public function add_menu() {
 			//add_options_page( __('Grueneext Options', 'grueneext'), __('Grueneext Options', 'grueneext'), 'manage_options', GRUENEEXT_PLUGIN_PREFIX . '_options', array( &$this, 'display_plugin_optionspage' ) );
 		}
-
+		
 		/**
 		 * Menu Callback
 		 */
@@ -196,12 +196,12 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		
 		/**
 		 * I18n.
-		 * 
+		 *
 		 * Note: Put the translation in the languages folder in the plugins directory,
 		 * name the translation files like "nameofplugin-lanugage_COUUNTRY.po". Ex: "grueneext-fr_FR.po"
 		 */
 		public function i18n() {
-			$path = dirname( plugin_basename(__FILE__) ) . '/languages';
+			$path = dirname( plugin_basename( __FILE__ ) ) . '/languages';
 			load_plugin_textdomain( 'grueneext', false, $path );
 		}
 		
@@ -211,10 +211,10 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		public function add_roles_on_plugin_activation() {
 			if ( is_multisite() ) {
 				global $wpdb;
-				$blogs_list = $wpdb->get_results("SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A);
+				$blogs_list = $wpdb->get_results( "SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A );
 				if ( ! empty( $blogs_list ) ) {
-					foreach ($blogs_list as $blog) {
-						switch_to_blog($blog['blog_id']);
+					foreach ( $blogs_list as $blog ) {
+						switch_to_blog( $blog['blog_id'] );
 						$this->add_roles_for_sigle_blog();
 						restore_current_blog();
 					}
@@ -228,7 +228,7 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		 * actually adds the roles
 		 */
 		private function add_roles_for_sigle_blog() {
-			foreach( $this->roles as $role ) {
+			foreach ( $this->roles as $role ) {
 				add_role( $role[0], $role[1], $role[2] );
 			}
 		}
@@ -239,10 +239,10 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		public function remove_roles_on_plugin_deactivation() {
 			if ( is_multisite() ) {
 				global $wpdb;
-				$blogs_list = $wpdb->get_results("SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A);
+				$blogs_list = $wpdb->get_results( "SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A );
 				if ( ! empty( $blogs_list ) ) {
-					foreach ($blogs_list as $blog) {
-						switch_to_blog($blog['blog_id']);
+					foreach ( $blogs_list as $blog ) {
+						switch_to_blog( $blog['blog_id'] );
 						$this->remove_roles_for_sigle_blog();
 						restore_current_blog();
 					}
@@ -256,7 +256,7 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		 * actually removes the roles
 		 */
 		private function remove_roles_for_sigle_blog() {
-			foreach( $this->roles as $role ) {
+			foreach ( $this->roles as $role ) {
 				remove_role( $role[0] );
 			}
 		}
@@ -267,10 +267,10 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		public function add_capabilities_on_plugin_activation() {
 			if ( is_multisite() ) {
 				global $wpdb;
-				$blogs_list = $wpdb->get_results("SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A);
+				$blogs_list = $wpdb->get_results( "SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A );
 				if ( ! empty( $blogs_list ) ) {
-					foreach ($blogs_list as $blog) {
-						switch_to_blog($blog['blog_id']);
+					foreach ( $blogs_list as $blog ) {
+						switch_to_blog( $blog['blog_id'] );
 						$this->add_capabilities_for_single_blog();
 						restore_current_blog();
 					}
@@ -288,9 +288,9 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 			$capabilities = array(
 				GRUENEEXT_PLUGIN_PREFIX . '_frontend',
 				GRUENEEXT_PLUGIN_PREFIX . '_admin',
-			); 
+			);
 			$this->add_plugin_capabilities_for( GRUENEEXT_PLUGIN_PREFIX . '_user', $capabilities[0] );
-			$this->add_plugin_capabilities_for( 'administrator' , $capabilities );
+			$this->add_plugin_capabilities_for( 'administrator', $capabilities );
 		}
 		
 		
@@ -300,10 +300,10 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		public function remove_capabilities_on_plugin_deactivation() {
 			if ( is_multisite() ) {
 				global $wpdb;
-				$blogs_list = $wpdb->get_results("SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A);
+				$blogs_list = $wpdb->get_results( "SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A );
 				if ( ! empty( $blogs_list ) ) {
-					foreach ($blogs_list as $blog) {
-						switch_to_blog($blog['blog_id']);
+					foreach ( $blogs_list as $blog ) {
+						switch_to_blog( $blog['blog_id'] );
 						$this->remove_capabilities_for_single_blog();
 						restore_current_blog();
 					}
@@ -321,17 +321,17 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 			$capabilities = array(
 				GRUENEEXT_PLUGIN_PREFIX . 'frontend',
 				GRUENEEXT_PLUGIN_PREFIX . 'admin',
-			); 
+			);
 			$this->remove_plugin_capabilities_for( GRUENEEXT_PLUGIN_PREFIX . 'user', $capabilities[0] );
-			$this->remove_plugin_capabilities_for( 'administrator' , $capabilities );
+			$this->remove_plugin_capabilities_for( 'administrator', $capabilities );
 			
 		}
 		
 		/**
 		 * Add capabilities
-		 * 
-		 * @var string			$role_name		subject
-		 * @var string|array 	$capabilities	caps to add
+		 *
+		 * @var string $role_name subject
+		 * @var string|array $capabilities caps to add
 		 */
 		public function add_plugin_capabilities_for( $role_name, $capabilities ) {
 			$role = get_role( $role_name );
@@ -342,9 +342,9 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		
 		/**
 		 * Remove capabilities
-		 * 
-		 * @var string			$role_name		subject
-		 * @var string|array 	$capabilities	caps to remove
+		 *
+		 * @var string $role_name subject
+		 * @var string|array $capabilities caps to remove
 		 */
 		public function remove_plugin_capabilities_for( $role_name, $capabilities ) {
 			$role = get_role( $role_name );
@@ -368,10 +368,10 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 			// single blog options
 			if ( is_multisite() ) {
 				global $wpdb;
-				$blogs_list = $wpdb->get_results("SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A);
+				$blogs_list = $wpdb->get_results( "SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A );
 				if ( ! empty( $blogs_list ) ) {
-					foreach ($blogs_list as $blog) {
-						switch_to_blog($blog['blog_id']);
+					foreach ( $blogs_list as $blog ) {
+						switch_to_blog( $blog['blog_id'] );
 						$this->add_options_for_sigle_blog();
 						restore_current_blog();
 					}
@@ -389,7 +389,7 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		 * So nothing will be overwritten. This function will only add single blog options.
 		 */
 		private function add_options_for_sigle_blog() {
-			foreach( $this->single_blog_options as $option_name => $option_data ) {
+			foreach ( $this->single_blog_options as $option_name => $option_data ) {
 				add_option( $option_name, $option_data );
 			}
 		}
@@ -399,7 +399,7 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		 * So nothing will be overwritten. This function will only add network options.
 		 */
 		private function add_site_options() {
-			foreach( $this->network_options as $option_name => $option_data ) {
+			foreach ( $this->network_options as $option_name => $option_data ) {
 				add_site_option( $option_name, $option_data );
 			}
 		}
@@ -408,10 +408,10 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		 * hook in the shortcodes
 		 */
 		public function short_code_handler() {
-               global $grueneext_frontend;
-               add_shortcode( 'hide_n_show', array( $grueneext_frontend, 'hide_n_show' ) );
+			global $grueneext_frontend;
+			add_shortcode( 'hide_n_show', array( $grueneext_frontend, 'hide_n_show' ) );
 			add_shortcode( 'button', array( $grueneext_frontend, 'button' ) );
-               add_shortcode( 'progressbar', array( $grueneext_frontend, 'progressbar' ) );
+			add_shortcode( 'progressbar', array( $grueneext_frontend, 'progressbar' ) );
 		}
 		
 		/**
@@ -423,16 +423,16 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 				if ( is_admin() && $style['scope'] == ( 'admin' || 'shared' ) ) {
 					if ( ! wp_style_is( $style['handle'], 'enqueued' ) ) {
 						if ( ! wp_style_is( $style['handle'], 'registered' ) ) {
-                                   $this->register_style( $style );
-                              }
+							$this->register_style( $style );
+						}
 						wp_enqueue_style( $style['handle'] );
 					}
 				}
 				if ( ! is_admin() && $style['scope'] == ( 'frontend' || 'shared' ) ) {
 					if ( ! wp_style_is( $style['handle'], 'enqueued' ) ) {
-                              if ( ! wp_style_is( $style['handle'], 'registered' ) ) {
-                                   $this->register_style( $style );
-                              }
+						if ( ! wp_style_is( $style['handle'], 'registered' ) ) {
+							$this->register_style( $style );
+						}
 						wp_enqueue_style( $style['handle'] );
 					}
 				}
@@ -442,16 +442,16 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 				if ( is_admin() && $script['scope'] == ( 'admin' || 'shared' ) ) {
 					if ( ! wp_script_is( $script['handle'], 'enqueued' ) ) {
 						if ( ! wp_script_is( $script['handle'], 'registered' ) ) {
-                                   $this->register_script( $script );
-                              }
+							$this->register_script( $script );
+						}
 						wp_enqueue_script( $script['handle'] );
 					}
 				}
 				if ( ! is_admin() && $script['scope'] == ( 'frontend' || 'shared' ) ) {
 					if ( ! wp_script_is( $script['handle'], 'enqueued' ) ) {
 						if ( ! wp_script_is( $script['handle'], 'registered' ) ) {
-                                   $this->register_script( $script );
-                              }
+							$this->register_script( $script );
+						}
 						wp_enqueue_script( $script['handle'] );
 					}
 				}
@@ -460,11 +460,11 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		
 		/**
 		 * register script
-		 * 
-		 * @var array 	$script		for params see __construct in Grueneext_Settings
+		 *
+		 * @var array $script for params see __construct in Grueneext_Settings
 		 */
 		public function register_script( $script ) {
-			wp_register_script( 
+			wp_register_script(
 				$script['handle'],
 				plugins_url( $script['src'], __FILE__ ),
 				$script['deps'],
@@ -475,8 +475,8 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		
 		/**
 		 * register style
-		 * 
-		 * @var array 	$style		for params see __construct in Grueneext_Settings
+		 *
+		 * @var array $style for params see __construct in Grueneext_Settings
 		 */
 		public function register_style( $style ) {
 			wp_register_style(
@@ -495,12 +495,12 @@ if ( class_exists( 'Grueneext_Main' ) ) {
 	
 	if ( ! is_admin() ) {
 		require_once( GRUENEEXT_PLUGIN_PATH . '/includes/class-grueneext-frontend.php' );
-          $grueneext_frontend = new Grueneext_Frontend();
-     } else {
-          require_once( GRUENEEXT_PLUGIN_PATH . '/includes/class-grueneext-admin.php' );
-          $grueneext_admin = New Grueneext_Admin();
-     }
-     
+		$grueneext_frontend = new Grueneext_Frontend();
+	} else {
+		require_once( GRUENEEXT_PLUGIN_PATH . '/includes/class-grueneext-admin.php' );
+		$grueneext_admin = New Grueneext_Admin();
+	}
+	
 	$grueneext_main = new Grueneext_Main();
 	
 }

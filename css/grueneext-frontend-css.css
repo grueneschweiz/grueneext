@@ -1,104 +1,170 @@
 /*--------------------------------------------------------------
 # Hide'n'show
 --------------------------------------------------------------*/
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display
-	{ margin-left: 2.5em; }
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display {
+    margin-left: 2.5em;
+}
 
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display a:before
-	{ content: ""; border-color: transparent #e10078; border-style: solid;
-       border-width: 0.5em 0 0.5em 0.5em; height: 0; width: 0; display: inline-block;
-	  margin-right: 1em; transition: transform 0.2s; margin-left: -2em;
-       transform-origin: center center; top: 0.1em; left: 0.25em; position: relative;}
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display a:before {
+    content: "";
+    border-color: transparent #e10078;
+    border-style: solid;
+    border-width: 0.5em 0 0.5em 0.5em;
+    height: 0;
+    width: 0;
+    display: inline-block;
+    margin-right: 1em;
+    transition: transform 0.2s;
+    margin-left: -2em;
+    transform-origin: center center;
+    top: 0.1em;
+    left: 0.25em;
+    position: relative;
+}
 
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display:hover a:before
-     { border-color: transparent #3a7a01; }
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display:hover a:before {
+    border-color: transparent #3a7a01;
+}
 
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display.grueneext_hide_n_show_closed a:before
-	{  }
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display.grueneext_hide_n_show_closed a:before {
+}
 
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display.grueneext_hide_n_show_open a:before
-	{ transform: rotate( 90deg ); }
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display.grueneext_hide_n_show_open a:before {
+    transform: rotate(90deg);
+}
 
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display a
-	{ color: #e10078; }
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display a {
+    color: #e10078;
+}
 
-div.grueneext_hide_n_show div.grueneext_hide_n_show_display:hover a
-	{ color: #3a7a01; }
+div.grueneext_hide_n_show div.grueneext_hide_n_show_display:hover a {
+    color: #3a7a01;
+}
 
-div.grueneext_hide_n_show_content
-     { overflow: hidden; /* Bugfix: To prevent it from juming around on toggling. */}
+div.grueneext_hide_n_show_content {
+    overflow: hidden; /* Bugfix: To prevent it from juming around on toggling. */
+}
+
 /*--------------------------------------------------------------
 # Button
 --------------------------------------------------------------*/
-a.grueneext_button
-     { color: #fff !important; padding: 0.5em 0.8em; display: inline-block; border-radius: 5px;
-       text-decoration: none; margin: 0.5em 0; }
+a.grueneext_button {
+    color: #fff !important;
+    padding: 0.5em 0.8em;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 0.5em 0;
+}
 
-a.grueneext_button:hover
-     { color: #fff; }
+a.grueneext_button:hover {
+    color: #fff;
+}
 
 a.grueneext_button.grueneext_button_magenta,
-a.grueneext_button.grueneext_button_green:hover
-     { background-color: #e10078; box-shadow: 0 0 7px 1px #cc006d inset; }
-     
+a.grueneext_button.grueneext_button_green:hover {
+    background-color: #e10078;
+    box-shadow: 0 0 7px 1px #cc006d inset;
+}
+
 a.grueneext_button.grueneext_button_green,
-a.grueneext_button.grueneext_button_magenta:hover
-     { background-color: #84b414; box-shadow: 0 0 7px 1px #709e2e inset; }
+a.grueneext_button.grueneext_button_magenta:hover {
+    background-color: #84b414;
+    box-shadow: 0 0 7px 1px #709e2e inset;
+}
 
 /*--------------------------------------------------------------
 # Progressbar
 --------------------------------------------------------------*/
-div.grueneext_progressbar
-     { border-radius: 5px; height: 2em; text-align: left; overflow: hidden; 
-       position: relative; margin: 3px 0; }
+div.grueneext_progressbar {
+    border-radius: 5px;
+    height: 2em;
+    text-align: left;
+    overflow: hidden;
+    position: relative;
+    margin: 3px 0;
+}
 
-div.grueneext_progressbar_magenta
-     { background-color: rgba(225, 0, 120, 0.11); box-shadow: 0 0 7px 1px #cc006d inset; }
+div.grueneext_progressbar_magenta {
+    background-color: rgba(225, 0, 120, 0.11);
+    box-shadow: 0 0 7px 1px #cc006d inset;
+}
 
-div.grueneext_progressbar_green
-     { background-color: rgba(132, 180, 20, 0.11); box-shadow: 0 0 7px 1px #709e2e inset; }
-     
-div.grueneext_progressbar_label
-     { position: absolute; left: calc( 50% - 10px ); color: #ffffff; top: 3px;}
-     
-div.grueneext_progressbar div.ui-progressbar-value
-     { height: 100%; border-radius: 4px 0 0 4px; }
+div.grueneext_progressbar_green {
+    background-color: rgba(132, 180, 20, 0.11);
+    box-shadow: 0 0 7px 1px #709e2e inset;
+}
 
-div.grueneext_progressbar.grueneext_progressbar_magenta div.ui-progressbar-value
-     { box-shadow: 0 0 7px 1px #cc006d inset; background: rgba(225, 0, 120, 1);
-       background: -webkit-linear-gradient(left, rgba(225, 0, 120, 0.7), rgba(225, 0, 120, 1));
-       background: -o-linear-gradient(right, rgba(225, 0, 120, 0.7), rgba(225, 0, 120, 1));
-       background: -moz-linear-gradient(right, rgba(225, 0, 120, 0.7), rgba(225, 0, 120, 1));
-       background: linear-gradient(to right, rgba(225, 0, 120, 0.7), rgba(225, 0, 120, 1)); }
+div.grueneext_progressbar_label {
+    position: absolute;
+    left: calc(50% - 10px);
+    color: #ffffff;
+    top: 3px;
+}
 
-div.grueneext_progressbar.grueneext_progressbar_green div.ui-progressbar-value
-     { box-shadow: 0 0 7px 1px #709e2e inset; background: rgba(132, 180, 20, 1);
-       background: -webkit-linear-gradient(left, rgba(132, 180, 20, 0.7), rgba(132, 180, 20, 1));
-       background: -o-linear-gradient(right, rgba(132, 180, 20, 0.7), rgba(132, 180, 20, 1));
-       background: -moz-linear-gradient(right, rgba(132, 180, 20, 0.7), rgba(132, 180, 20, 1));
-       background: linear-gradient(to right, rgba(132, 180, 20, 0.7), rgba(132, 180, 20, 1)); }
-     
-div.grueneext_progressbar div.ui-progressbar-value:after 
-     { content: ""; position: absolute; top: 0; left: 0; height: 100%;
-       -webkit-animation-name: progressbar; -webkit-animation-duration: 5s;
-       -webkit-animation-iteration-count: infinite;
-       animation-name: progressbar; animation-duration: 5s;
-       animation-iteration-count: infinite; }
+div.grueneext_progressbar div.ui-progressbar-value {
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+}
+
+div.grueneext_progressbar.grueneext_progressbar_magenta div.ui-progressbar-value {
+    box-shadow: 0 0 7px 1px #cc006d inset;
+    background: rgba(225, 0, 120, 1);
+    background: -webkit-linear-gradient(left, rgba(225, 0, 120, 0.7), rgba(225, 0, 120, 1));
+    background: -o-linear-gradient(right, rgba(225, 0, 120, 0.7), rgba(225, 0, 120, 1));
+    background: -moz-linear-gradient(right, rgba(225, 0, 120, 0.7), rgba(225, 0, 120, 1));
+    background: linear-gradient(to right, rgba(225, 0, 120, 0.7), rgba(225, 0, 120, 1));
+}
+
+div.grueneext_progressbar.grueneext_progressbar_green div.ui-progressbar-value {
+    box-shadow: 0 0 7px 1px #709e2e inset;
+    background: rgba(132, 180, 20, 1);
+    background: -webkit-linear-gradient(left, rgba(132, 180, 20, 0.7), rgba(132, 180, 20, 1));
+    background: -o-linear-gradient(right, rgba(132, 180, 20, 0.7), rgba(132, 180, 20, 1));
+    background: -moz-linear-gradient(right, rgba(132, 180, 20, 0.7), rgba(132, 180, 20, 1));
+    background: linear-gradient(to right, rgba(132, 180, 20, 0.7), rgba(132, 180, 20, 1));
+}
+
+div.grueneext_progressbar div.ui-progressbar-value:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    -webkit-animation-name: progressbar;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: progressbar;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
 
 @-webkit-keyframes progressbar {
-     0% 
-          { background-color: rgba( 255,255,255,0.1 ); width: 0; }
-     25% 
-          { background-color: rgba(255,255,255,0); width: 120%; }
-     100%
-          { background-color: rgba(255,255,255,0); width: 0; }
+    0% {
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 0;
+    }
+    25% {
+        background-color: rgba(255, 255, 255, 0);
+        width: 120%;
+    }
+    100% {
+        background-color: rgba(255, 255, 255, 0);
+        width: 0;
+    }
 }
 
 @keyframes progressbar {
-     0% 
-          { background-color: rgba( 255,255,255,0.1 ); width: 0; }
-     25% 
-          { background-color: rgba(255,255,255,0); width: 120%; }
-     100%
-          { background-color: rgba(255,255,255,0); width: 0; }
+    0% {
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 0;
+    }
+    25% {
+        background-color: rgba(255, 255, 255, 0);
+        width: 120%;
+    }
+    100% {
+        background-color: rgba(255, 255, 255, 0);
+        width: 0;
+    }
 }

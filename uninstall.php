@@ -1,8 +1,9 @@
 <?php
 
 //if uninstall not called from WordPress exit
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) 
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit();
+}
 
 
 require_once( dirname( __FILE__ ) . '/settings.php' );
@@ -11,8 +12,8 @@ require_once( dirname( __FILE__ ) . '/settings.php' );
 $grueneext_uninstall = new Grueneext_Uninstall();
 $grueneext_uninstall->uninstall();
 
-if( ! class_exists( 'Grueneext_Uninstall' ) ) {
-
+if ( ! class_exists( 'Grueneext_Uninstall' ) ) {
+	
 	class Grueneext_Uninstall extends Grueneext_Settings {
 		
 		/**
@@ -30,15 +31,15 @@ if( ! class_exists( 'Grueneext_Uninstall' ) ) {
 				
 				// delete network wide tables
 				foreach ( $this->network_tables as $table_name ) {
-					$wpdb->query( "DROP TABLE IF EXISTS $table_name");
+					$wpdb->query( "DROP TABLE IF EXISTS $table_name" );
 				}
 				
 				
 				// delete individual blog settings and tables 
-				$blogs_list = $wpdb->get_results("SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A);
+				$blogs_list = $wpdb->get_results( "SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A );
 				if ( ! empty( $blogs_list ) ) {
-					foreach ($blogs_list as $blog) {
-						switch_to_blog($blog['blog_id']);
+					foreach ( $blogs_list as $blog ) {
+						switch_to_blog( $blog['blog_id'] );
 						uninstall_on_single_blog();
 						restore_current_blog();
 					}
@@ -67,6 +68,6 @@ if( ! class_exists( 'Grueneext_Uninstall' ) ) {
 			}
 			
 		}
-	
+		
 	}
 }

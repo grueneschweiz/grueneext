@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Grueneext\n"
-"POT-Creation-Date: 2016-04-14 22:42+0100\n"
-"PO-Revision-Date: 2016-04-14 23:00+0100\n"
+"POT-Creation-Date: 2018-01-30 12:51+0100\n"
+"PO-Revision-Date: 2018-01-30 12:54+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:4c,1,2;_n_noop:1,2;"
 "_nx_noop:4c,1,2;esc_html__;esc_html_e;esc_html_x:1,2c;esc_attr__;esc_attr_e;"
 "esc_attr_x:1,2c\n"
@@ -18,89 +18,118 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../grueneext.php:190
-msgid "You do not have sufficient permissions to access this page."
-msgstr "Keine Rechte zum Anzeigen dieser Seite."
-
 #: ../admin/options.php:2
 msgid "Grueneext options"
 msgstr "Grueneext Optionen"
 
 #: ../admin/short-code-generator.php:8
-msgid "Which type of special function shall be insertet?"
+msgid "Which type of special function shall be inserted?"
 msgstr "Welche Spezialfunktion soll eingefügt werden?"
 
-#: ../admin/short-code-generator.php:10
+#: ../admin/short-code-generator.php:11
 msgid "Select special function"
 msgstr "Wähle die Spezialfunktion"
 
-#: ../admin/short-code-generator.php:11
+#: ../admin/short-code-generator.php:12
 msgid "Hide and Show"
 msgstr "Hide and Show"
 
-#: ../admin/short-code-generator.php:12
+#: ../admin/short-code-generator.php:13
 msgid "Button"
 msgstr "Button"
 
-#: ../admin/short-code-generator.php:13
+#: ../admin/short-code-generator.php:14
 msgid "Progressbar"
 msgstr "Fortschrittsanzeige"
 
-#: ../admin/short-code-generator.php:19
+#: ../admin/short-code-generator.php:15
+msgid "Donation form"
+msgstr "Spendenformular"
+
+#: ../admin/short-code-generator.php:21
 msgid "Enter the title of your hide and show element"
 msgstr "Gib hier den Titel deines Hide and show Elements an"
 
-#: ../admin/short-code-generator.php:20
+#: ../admin/short-code-generator.php:24
 msgid "Enter your \"Hide and Show\" title here."
 msgstr "Gib hier dein \"Hide and Show\" title ein."
 
-#: ../admin/short-code-generator.php:26
+#: ../admin/short-code-generator.php:30
 msgid "Enter the link where the button leads to"
 msgstr "Setze den Link des Buttons"
 
-#: ../admin/short-code-generator.php:27
+#: ../admin/short-code-generator.php:33
 msgid "Where shall the button lead to (URL)?"
 msgstr "Wohin soll der Button führen (URL)?"
 
-#: ../admin/short-code-generator.php:30 ../admin/short-code-generator.php:59
+#: ../admin/short-code-generator.php:36 ../admin/short-code-generator.php:69
 msgid "Chose color scheme"
 msgstr "Wähle den Farbmodus"
 
-#: ../admin/short-code-generator.php:32 ../admin/short-code-generator.php:61
+#: ../admin/short-code-generator.php:38 ../admin/short-code-generator.php:72
 msgid "Magenta"
 msgstr "Magenta"
 
-#: ../admin/short-code-generator.php:33 ../admin/short-code-generator.php:62
+#: ../admin/short-code-generator.php:39 ../admin/short-code-generator.php:73
 msgid "Green"
 msgstr "Grün"
 
-#: ../admin/short-code-generator.php:40
+#: ../admin/short-code-generator.php:46
 msgid "Enter the maximum value."
 msgstr "Gib den Maximalwert an."
 
-#: ../admin/short-code-generator.php:44
+#: ../admin/short-code-generator.php:51
 msgid "Enter the current value."
 msgstr "Gib den aktuellen Stand an."
 
-#: ../admin/short-code-generator.php:48
+#: ../admin/short-code-generator.php:56
 msgid "Enter the unit (optional)."
 msgstr "Gib die Einheit an (optional)."
 
-#: ../admin/short-code-generator.php:52
+#: ../admin/short-code-generator.php:61
 msgid "Choose if the value should be displayed"
 msgstr "Wähle, ob der Stand angezeigt werden soll"
 
-#: ../admin/short-code-generator.php:54
+#: ../admin/short-code-generator.php:64
 msgid "Show value"
 msgstr "Zeige Stand"
 
-#: ../admin/short-code-generator.php:55
+#: ../admin/short-code-generator.php:65
 msgid "Hide value"
 msgstr "Verberge Stand"
 
-#: ../admin/short-code-generator.php:67
+#: ../admin/short-code-generator.php:79
+msgid "You need to have a contract with RaiseNow to use this function."
+msgstr ""
+"Du brauchst einen Vertrag mit RaiseNow, um diese Funktion nutzen zu können."
+
+#: ../admin/short-code-generator.php:81
+msgid "Enter the API key you received from RaiseNow"
+msgstr "Gebe den API-Key ein, den du von RaiseNow erhalten hast"
+
+#: ../admin/short-code-generator.php:84
+msgid "Enter the API key here."
+msgstr "Gib den API-Key hier ein."
+
+#: ../admin/short-code-generator.php:87
+msgid "Choose language for the donation form"
+msgstr "Wähle die Sprache des Spendenformulars"
+
+#: ../admin/short-code-generator.php:90
+msgid "German"
+msgstr "Deutsch"
+
+#: ../admin/short-code-generator.php:91
+msgid "French"
+msgstr "Französisch"
+
+#: ../admin/short-code-generator.php:97
 msgid "Insert shortcode"
 msgstr "Shortcode einfügen"
+
+#: ../grueneext.php:190
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Keine Rechte zum Anzeigen dieser Seite."
 
 #: ../includes/class-grueneext-admin.php:34
 msgid "Insert Theme Shortcode"
@@ -109,6 +138,25 @@ msgstr "Theme-Shortcode einfügen"
 #: ../includes/class-grueneext-admin.php:36
 msgid "Add Special Function"
 msgstr "Spezialfunktion hinzufügen"
+
+#: ../includes/class-grueneext-frontend.php:167
+#, php-format
+msgctxt "%s will be replaced with an example shortcode"
+msgid "Missing api key in shortcode. Shortcode must have the form: %s"
+msgstr ""
+"Fehlender API-Key im Shortcode. Der Shortcode muss folgendes format haben: %s"
+
+#: ../includes/class-grueneext-frontend.php:174
+#, php-format
+msgctxt ""
+"%1$s will be replaced with the accepted language keys. %2$s will be replaced "
+"with an example shortcode"
+msgid ""
+"Unknown language key in shortcode. Accepted values are %1$s. Shortcode must "
+"have the form: %2$s"
+msgstr ""
+"Unbekannter Sprachschlüssel im Shortcode. Akzeptierte Werte sind %1$s. Der "
+"Shortcode muss die folgende Form haben: %2$s"
 
 #~ msgid "Unterschriften eintragen"
 #~ msgstr "Ajouter signatures"

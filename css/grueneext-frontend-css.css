@@ -32,7 +32,7 @@ div.grueneext_hide_n_show_content
 --------------------------------------------------------------*/
 a.grueneext_button
      { color: #fff !important; padding: 0.5em 0.8em; display: inline-block; border-radius: 5px;
-       text-decoration: none; }
+       text-decoration: none; margin: 0.5em 0; }
 
 a.grueneext_button:hover
      { color: #fff; }

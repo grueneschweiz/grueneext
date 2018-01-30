@@ -43,7 +43,7 @@ define( 'GRUENEEXT_PLUGIN_PATH', dirname( __FILE__ ) );
 /**
  * version number (dont forget to change it also in the header)
  */
-define( 'GRUENEEXT_VERSION', '1.0.5' );
+define( 'GRUENEEXT_VERSION', '1.1.0' );
 
 /**
  * plugin prefix

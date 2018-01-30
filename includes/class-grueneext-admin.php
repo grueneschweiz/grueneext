@@ -33,7 +33,7 @@ if ( ! class_exists( 'Grueneext_Admin' ) ) {
 			echo '<a href="#TB_inline?&inlineId=grueneext-short-code-generator" class="thickbox button" ' .
 			     'title="' . esc_attr__( "Insert Theme Shortcode", "grueneext" ) . '">' .
 			     '<span class="wp-media-buttons-icon dashicons dashicons-plus"></span> ' .
-			     __( "Add Special Function", "gruene" ) . '</a>';
+			     __( "Add Special Function", "grueneext" ) . '</a>';
 		}
 		
 		/**

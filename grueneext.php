@@ -121,7 +121,7 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 		 * Hook into WP's admin_init action hook
 		 */
 		public function admin_init() {
-			// $this->init_options();
+			$this->init_options();
 		}
 		
 		/**
@@ -155,31 +155,115 @@ if ( ! class_exists( 'Grueneext_Main' ) ) {
 				return; // BREAKPOINT
 			}
 			
-			/*
-			// run the upgrade routine for versions smaller 1.3.0
-			if ( -1 == version_compare( $current_version, '1.3.0' ) ) {
-				// YOUR UPGRADE ROUTINE
-			}*/
+			
+			// run the upgrade routine for versions smaller 1.2.0
+			if ( - 1 == version_compare( $current_version, '1.2.0' ) ) {
+				
+				$defaults = [
+					'custom_script' => "window.rnwWidget = window.rnwWidget || {};window.rnwWidget.configureWidget = function(options) {options.defaults['ui_onetime_amount_default'] = '5000';};",
+					'custom_css'    => '#lema-container.lema-container .lema-step-header, #lema-container.lema-container .lema-step, #lema-container.lema-container .lema-step-content {background:transparent;} #lema-container.lema-container .lema-button, #lema-container.lema-container .lema-step-number span {background: #e10078;} #lema-container.lema-container .lema-step-header {border-bottom: #e10078 1px solid;} #lema-container.lema-container .lema-step-number span, #lema-container.lema-container .lema-step-header-text, #lema-container.lema-container .lema-button-donate {font-family: \'Tahoma\', \'Verdana\', \'Segoe\', \'sans-serif\'; font-weight: bold;} #lema-container.lema-container .lema-step-header-text {color:#e10078;} #lema-container.lema-container .lema-amount-box.lema-active {border: #e10078 2px solid} .lema-overlay-bg {display: none !important;}',
+				];
+				$this->upgrade_all_sites_options_if_empty( GRUENEEXT_PLUGIN_PREFIX . '_donation_options', $defaults );
+			}
 			
 			// set the current version number
 			$this->set_version_number();
 			
 		}
 		
+		/**
+		 * update the options of all sites if they are empty. use on upgrade only
+		 *
+		 * @param string $option_id the option to add
+		 * @param mixed $value the value
+		 */
+		public function upgrade_all_sites_options_if_empty( $option_id, $value ) {
+			if ( is_multisite() ) {
+				global $wpdb;
+				$blogs_list = $wpdb->get_results( "SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A );
+				if ( ! empty( $blogs_list ) ) {
+					foreach ( $blogs_list as $blog ) {
+						switch_to_blog( $blog['blog_id'] );
+						if ( empty( get_option( $option_id ) ) ) {
+							update_option( $option_id, $value );
+						}
+						restore_current_blog();
+					}
+				}
+			} else {
+				if ( empty( get_option( $option_id ) ) ) {
+					update_option( $option_id, $value );
+				}
+			}
+		}
 		
 		/**
 		 * Initialize some custom settings
 		 */
 		public function init_options() {
-			//register_setting( GRUENEEXT_PLUGIN_PREFIX . '_options', 'option_a', ['validation_function'] );
-			//register_setting( GRUENEEXT_PLUGIN_PREFIX . '_options', 'option_a', ['validation_function'] );
+			register_setting( GRUENEEXT_PLUGIN_PREFIX . '_donation_settings', GRUENEEXT_PLUGIN_PREFIX . '_donation_options' );
+			
+			add_settings_section(
+				GRUENEEXT_PLUGIN_PREFIX . '_donation_section',
+				__( 'Customize donation form', 'grueneext' ),
+				[ &$this, 'donation_options_section_header' ],
+				GRUENEEXT_PLUGIN_PREFIX . '_donation_settings'
+			);
+			
+			add_settings_field(
+				GRUENEEXT_PLUGIN_PREFIX . '_custom_script',
+				__( 'Add custom script', 'grueneext' ),
+				[ &$this, 'render_custom_code_option' ],
+				GRUENEEXT_PLUGIN_PREFIX . '_donation_settings',
+				GRUENEEXT_PLUGIN_PREFIX . '_donation_section',
+				[
+					'option_id' => 'custom_script',
+					'helptext'  => "<p>" . __( 'Enter your js below, without the <script></script> tags.', 'grueneext' ) . "</p>",
+				]
+			);
+			
+			add_settings_field(
+				GRUENEEXT_PLUGIN_PREFIX . '_custom_css',
+				__( 'Add custom css', 'grueneext' ),
+				[ &$this, 'render_custom_code_option' ],
+				GRUENEEXT_PLUGIN_PREFIX . '_donation_settings',
+				GRUENEEXT_PLUGIN_PREFIX . '_donation_section',
+				[
+					'option_id' => 'custom_css',
+					'helptext'  => "<p>" . __( 'Enter your custom css below, without the <style></style> tags.', 'grueneext' ) . "</p>",
+				]
+			);
+		}
+		
+		public function donation_options_section_header() {
+			echo __( 'Use the options below to customize your donation form.', 'grueneext' );
+		}
+		
+		public function render_custom_code_option( $args ) {
+			$options_id = GRUENEEXT_PLUGIN_PREFIX . '_donation_options';
+			$options    = get_option( $options_id );
+			
+			if ( isset( $options[ $args['option_id'] ] ) ) {
+				$input = $options[ $args['option_id'] ];
+			} else {
+				$input = '';
+			}
+			
+			echo $args['helptext'];
+			echo "<textarea style='resize: both;' name='{$options_id}[{$args['option_id']}]'>$input</textarea>";
 		}
 		
 		/**
 		 * Add a menu
 		 */
 		public function add_menu() {
-			//add_options_page( __('Grueneext Options', 'grueneext'), __('Grueneext Options', 'grueneext'), 'manage_options', GRUENEEXT_PLUGIN_PREFIX . '_options', array( &$this, 'display_plugin_optionspage' ) );
+			add_options_page(
+				__( 'Online donations', 'grueneext' ),
+				__( 'Online donations', 'grueneext' ),
+				'manage_options',
+				GRUENEEXT_PLUGIN_PREFIX . '_donation_settings',
+				[ &$this, 'display_plugin_optionspage' ]
+			);
 		}
 		
 		/**

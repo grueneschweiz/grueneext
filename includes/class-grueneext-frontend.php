@@ -177,11 +177,15 @@ if ( ! class_exists( 'Grueneext_Frontend' ) ) {
 						'[donation_form api_key="API_KEY" language="LANG"]' ) . '</div>';
 			}
 			
+			$options       = get_option( GRUENEEXT_PLUGIN_PREFIX . '_donation_options' );
+			$custom_css    = $options['custom_css'];
+			$custom_script = $options['custom_script'];
+			
 			return '<div class="' . esc_attr( $class ) . ' ' . esc_attr( $add_class ) . '" style="' . esc_attr( $css ) . '">'
 			       . '<div class="dds-widget-container" data-widget="lema"></div>'
 			       . '<script language="javascript" src="https://widget.raisenow.com/widgets/lema/' . esc_attr( $api_key ) . '/js/dds-init-widget-' . esc_attr( $language ) . '.js" type="text/javascript"></script>'
-			       . '<script type="text/javascript">window.rnwWidget = window.rnwWidget || {};window.rnwWidget.configureWidget = function(options) {options.defaults[\'ui_onetime_amount_default\'] = \'5000\';};</script>'
-			       . '<style type="text/css" scoped>#lema-container.lema-container .lema-step-header, #lema-container.lema-container .lema-step, #lema-container.lema-container .lema-step-content {background:transparent;} #lema-container.lema-container .lema-button, #lema-container.lema-container .lema-step-number span {background: #e10078;} #lema-container.lema-container .lema-step-header {border-bottom: #e10078 1px solid;} #lema-container.lema-container .lema-step-number span, #lema-container.lema-container .lema-step-header-text, #lema-container.lema-container .lema-button-donate {font-family: \'Tahoma\', \'Verdana\', \'Segoe\', \'sans-serif\'; font-weight: bold;} #lema-container.lema-container .lema-step-header-text {color:#e10078;} #lema-container.lema-container .lema-amount-box.lema-active {border: #e10078 2px solid} .lema-overlay-bg {display: none !important;}</style>'
+			       . '<script type="text/javascript">' . $custom_script . '</script>'
+			       . '<style type="text/css" scoped>' . $custom_css . '</style>'
 			       . '</div>';
 		}
 	}

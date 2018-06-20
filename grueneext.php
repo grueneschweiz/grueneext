@@ -2,11 +2,11 @@
 
 /**
  * Plugin Name: Grueneext
- * Plugin URI: http://www.cyrillbolliger.ch
+ * Plugin URI: https://github.com/grueneschweiz/grueneext/
  * Version: 1.2.0
  * Description: Extended functions for the gruene theme
  * Author: Cyrill Bolliger
- * Author URI: http://www.cyrillbolliger.ch
+ * Author URI: https://github.com/grueneschweiz/grueneext/
  * Text Domain: grueneext
  * Domain Path: languages
  * GitHub Plugin URI: cyrillbolliger/grueneext

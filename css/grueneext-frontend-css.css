@@ -83,6 +83,7 @@ div.grueneext_progressbar {
     overflow: hidden;
     position: relative;
     margin: 3px 0;
+    border: none;
 }
 
 div.grueneext_progressbar_magenta {
@@ -99,12 +100,14 @@ div.grueneext_progressbar_label {
     position: absolute;
     left: calc(50% - 10px);
     color: #ffffff;
+    mix-blend-mode: difference;
     top: 3px;
 }
 
 div.grueneext_progressbar div.ui-progressbar-value {
-    height: 100%;
+    height: 110%;
     border-radius: 4px 0 0 4px;
+    border: none;
 }
 
 div.grueneext_progressbar.grueneext_progressbar_magenta div.ui-progressbar-value {

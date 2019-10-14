@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Grueneext
  * Plugin URI: https://github.com/grueneschweiz/grueneext/
- * Version: 1.2.0
+ * Version: 1.3.0
  * Description: Extended functions for the gruene theme
  * Author: Cyrill Bolliger
  * Author URI: https://github.com/grueneschweiz/grueneext/
@@ -43,7 +43,7 @@ define( 'GRUENEEXT_PLUGIN_PATH', dirname( __FILE__ ) );
 /**
  * version number (don't forget to change it also in the header)
  */
-define( 'GRUENEEXT_VERSION', '1.2.0' );
+define( 'GRUENEEXT_VERSION', '1.3.0' );
 
 /**
  * plugin prefix
